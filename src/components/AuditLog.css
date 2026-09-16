@@ -1,0 +1,1 @@
+.audit-panel h2{margin:0 0 10px}.audit-panel{max-height:250px;overflow:auto}.audit-panel p{font-size:.8rem;color:var(--muted)}.audit-panel ol{list-style:none;padding:0;margin:0}.audit-panel li{border-top:1px solid var(--line);padding:8px 0;font-size:.75rem;display:grid;gap:3px}.audit-panel time{color:var(--muted)}

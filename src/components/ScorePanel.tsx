@@ -1,0 +1,7 @@
+import type { PairScore } from '../engine/followScore';
+import './ScorePanel.css';
+export default function ScorePanel({ pair, privacy, onPrivacy }: { pair?: PairScore; privacy: boolean; onPrivacy: () => void }) {
+  return <section className="panel score-panel"><div className="panel-heading"><h2>{privacy ? "What's stored" : 'Follow Score'}</h2><button className="text-button" onClick={onPrivacy}>{privacy ? 'View score' : "What's stored"}</button></div>
+    {privacy ? <div className="privacy-copy"><h3>Retained</h3><ul><li>Rotating anonymous track tokens (every 30 minutes)</li><li>Zone-level positions and motion vectors</li><li>Derived sensor events and alert audit trail</li><li>Non-alert data auto-deleted after 24 hours</li></ul><h3>Never collected</h3><ul><li>Faces or biometric identities</li><li>Names or student records</li><li>Continuous student phone location</li></ul></div> : pair ? <><div className={`score-number ${pair.tier.toLowerCase()}`}>{pair.score}<span>/100</span><strong>{pair.tier}</strong></div><div className="score-track"><div style={{ width: `${pair.score}%` }} /></div><p className="pair-caption">{pair.follower} → {pair.leader}</p><p className="score-reason">{pair.reason}</p><div className="breakdown">{pair.breakdown.map(row => <div className="breakdown-row" key={row.signal}><div><b>{row.signal}</b><small>{row.value}</small></div><strong>{row.points ? `+${row.points}` : '0'}</strong></div>)}</div></> : <p>No tracks yet.</p>}
+  </section>;
+}
